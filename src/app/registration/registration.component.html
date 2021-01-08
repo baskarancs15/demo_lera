@@ -5,21 +5,31 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign Up</h5>
-            <form class="form-signup">
+            <form [formGroup]="signupForm" class="form-signup">
 
               <div class="form-label-group">
-                <input type="username1" id="userName1" class="form-control" placeholder="User name" required autofocus>
+                <input type="text" id="userName1" class="form-control" placeholder="User name"
+                  formControlName="username1" minlength="3" maxlength="20"
+                  [ngClass]="{ 'is-invalid': f.username1.touched && f.username1.errors }" required autofocus>
                 <label for="userName1">User name</label>
+                <div *ngIf="f.username1.touched && f.username1.errors" class="invalid-feedback">
+                  <div *ngIf="f.username1.errors.required">User Name is required</div>
+                  <div *ngIf="f.username1.errors.pattern">User Name is invalid</div>
+                  <!-- <div *ngIf="f.username1.errors.minlength">User Name must be minimum of 3 characters </div>
+                  <div *ngIf="f.username1.errors.maxlength">User Name must be 20 maximum of characters</div> -->
+                  <div *ngIf="f.username1.errors.maxlength || f.username1.errors.minlength">User name must be 3-20
+                    characters long </div>
+                </div>
               </div>
 
-              <div class="form-label-group">
+              <!-- <div class="form-label-group">
                 <input type="fullname1" id="fullName1" class="form-control" placeholder="Full name" required autofocus>
                 <label for="fullName1">Full name</label>
-              </div>
+              </div> -->
 
               <div class="form-label-group">
-                <input type="mobileno" id="mobileNo" class="form-control" placeholder="Mobile number" required
-                  autofocus>
+                <input type="text" id="mobileNo" class="form-control" placeholder="Mobile number"
+                  formControlName="mobile" required autofocus>
                 <label for="mobileNo">Mobile number</label>
               </div>
 
@@ -29,7 +39,8 @@
               </div> -->
 
               <div class="form-label-group">
-                <input type="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword1" class="form-control" placeholder="Password"
+                  formControlName="password1" required autofocus>
                 <label for="inputPassword1">Password</label>
               </div>
 
