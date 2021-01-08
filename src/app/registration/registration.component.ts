@@ -21,6 +21,12 @@ export class RegistrationComponent implements OnInit {
     Validators.maxLength(20),
     Validators.pattern(/^[A-Za-z0-9]*$/)
   ];
+  mobileVal: any = [
+    Validators.required,
+    Validators.minLength(10),
+    Validators.maxLength(10),
+    Validators.pattern(/^[6-9][0-9]{9}$/)
+  ];
 
   constructor(private router: Router,
     private formBuilder: FormBuilder) { }
@@ -29,7 +35,7 @@ export class RegistrationComponent implements OnInit {
 
     this.signupForm = this.formBuilder.group({
       username1: new FormControl('', this.usernameVal),
-      mobile1: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)],
+      mobile1: new FormControl('', this.mobileVal),
       password1: new FormControl('', this.passwordVal),
     });
 
@@ -40,11 +46,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   signup() {
+    console.log('123');
+
     if (this.signupForm.value.mobile1 !== '' && this.signupForm.value.password1 !== '' && this.signupForm.value.username1 !== '') {
       this.router.navigate(['/home']);
+
     } else {
       // this.toastr.warning('Please try again later', null);
       console.log('Please fill data');
+      this.signupForm.reset();
     }
   }
   get f() {
