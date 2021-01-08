@@ -47,5 +47,9 @@ export class RegistrationComponent implements OnInit {
       console.log('Please fill data');
     }
   }
-  get f() { return this.signupForm.controls; }
+  get f() {
+    // console.log(this.signupForm.controls);
+    return this.signupForm.controls;
+  }
 }
+
