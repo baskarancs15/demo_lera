@@ -3,19 +3,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
 })
-export class LoginComponent implements OnInit {
-
+export class RegistrationComponent implements OnInit {
 
   constructor(private router: Router,) { }
 
   ngOnInit() {
   }
 
-  register() {
-    this.router.navigate(['/register']);
+  signin() {
+    this.router.navigate(['/login']);
   }
 }
