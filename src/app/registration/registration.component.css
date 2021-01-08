@@ -1,4 +1,4 @@
-:root {
+:host {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
 }
@@ -6,6 +6,7 @@
 body {
   background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
+  height: 100vh;
 }
 
 .card-signin {
@@ -24,11 +25,11 @@ body {
   padding: 2rem;
 }
 
-.form-signin {
+.form-signup {
   width: 100%;
 }
 
-.form-signin .btn {
+.form-signup .btn {
   font-size: 80%;
   border-radius: 5rem;
   letter-spacing: .1rem;
@@ -110,7 +111,7 @@ body {
 }
 
 /* Fallback for Edge
-  -------------------------------------------------- */
+-------------------------------------------------- */
 
 @supports (-ms-ime-align: auto) {
   .form-label-group>label {
@@ -123,7 +124,7 @@ body {
 }
 
 /* Fallback for IE
-  -------------------------------------------------- */
+-------------------------------------------------- */
 
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
