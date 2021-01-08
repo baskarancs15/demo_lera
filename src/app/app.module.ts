@@ -12,7 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListretailersComponent } from './listretailers/listretailers.component';
 import { DefaultComponent } from './default/default.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFullpageModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
+    HttpClientModule
   ],
   exports: [
     RegistrationComponent
