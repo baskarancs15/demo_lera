@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?=.*?^[A-Za-z0-9!<>?/{}\|+-_=@#%$^*()]*$)/)
 ];
   constructor(private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home']);
     }else {
       this.loginForm.reset();
-      // this.toastr.warning('Please try again later', null);
+      this.toastr.warning('Please fill all feilds');
     }
   }
 }
