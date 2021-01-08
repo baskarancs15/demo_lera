@@ -11242,4 +11242,13 @@
   body.sidebar-toggled footer.sticky-footer {
     width: 100%;
   }
+
+  .chart-pie {
+    position: relative;
+    height: 15rem;
+    width: 100%;
+    /* @include media-breakpoint-up(md) {
+      height: calc(20rem - 43px) !important;
+    } */
+  }
   
