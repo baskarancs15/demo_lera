@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +20,14 @@ export class LoginComponent implements OnInit {
   ];
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private apiService: ApiService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      mobile: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)]),
+      mobile: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)]),
       // mobile: ['',  Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)],
-      password: new FormControl('', this.passwordVal),
+      password: new FormControl(null, this.passwordVal),
     });
   }
 
@@ -38,8 +40,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.loginForm.value.mobile != '', this.loginForm.value.password != '') {
-      this.router.navigate(['/home']);
+    if (this.loginForm.value.mobile != null && this.loginForm.value.password != null) {
+      const ObjData = {
+        "mobilenumber": this.loginForm.value.mobile
+        // "password": this.loginForm.value.password
+      }
+      this.apiService.login(ObjData)
+        .subscribe((loginresult: any) => {
+          if (loginresult != null) {
+            this.router.navigate(['/home/dashboard/default']);
+          } else {
+            this.toastr.warning('Invalid Credentials');
+          }
+        });
     } else {
       this.loginForm.reset();
       this.toastr.warning('Please fill all feilds');
