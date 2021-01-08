@@ -7,13 +7,16 @@
             <h5 class="card-title text-center">Sign In</h5>
             <form [formGroup]="loginForm" class="form-signin">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Mobile" formControlName="mobile" required autofocus>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Mobile" formControlName="mobile" required>
                 <label for="inputEmail">Mobile</label>
+                <p class="error" *ngIf="f.mobile.touched && f.mobile.errors">{{'Mobile is required'}}</p>
+                <p class="error" *ngIf="loginForm.get('mobile').hasError('pattern')">{{'Please enter a valid mobile number'}}</p>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }" required>
                 <label for="inputPassword">Password</label>
+                <p class="error" *ngIf="f.password.touched && f.password.errors" >{{'Password is required'}}</p>
               </div>
 
               <!-- <div class="custom-control custom-checkbox mb-3">
