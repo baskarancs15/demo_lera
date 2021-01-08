@@ -1,0 +1,64 @@
+<!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer" >
+  <div class="mdl-layout__drawer" style="background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);">
+    <span class="mdl-layout-title" align="center" style="padding-top: 60px;">
+
+
+
+      <!-- <img src="../../assets/images/headerlogo.png" style="
+      margin-left: -56px;
+      " width="150" height="50"> -->
+    </span>
+    <img class="ui small circular image" src="../../assets/images/final-1.png" style="height: 120px;width: 120px;margin-left: 60px;" align="center">
+    <br>
+
+    <nav class="mdl-navigation" style="color: #3cba92 !important;padding-top: 20px;">
+
+      <a  class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;" [routerLink]="['/home/dashboard/listbanks']" (click)="click_offset_my_banks()"> <span *ngIf="offset_my_playlist" style="font-weight: 600;">  &nbsp;</span> <i class="fas fa-play"></i> &nbsp;  Banks</a>
+
+      <a class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;" [routerLink]="['/home/dashboard/listretailers']" (click)="click_offset_retailers()"><span *ngIf="offset_channels" style="font-weight: 600;"> &nbsp; </span>
+        <i class="far fa-clone"></i> &nbsp; Retailers</a>
+
+        <!-- <a *ngIf="showDashMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;" [routerLink]="['/dashboard/dash/curators-dash']" (click)="click_offset_curators()"> <span *ngIf="offset_curators" style="font-weight: 600;"> &nbsp; </span> <i class="fas fa-user"></i> &nbsp; Curators</a>
+
+        <a *ngIf="showDashMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;" [routerLink]="['/home/dashboard/listretailers']" (click)="click_offset_playlists()">  <span *ngIf="offset_playlists" style="font-weight: 600;"> &nbsp;  </span>  <i class="fas fa-list"></i>   &nbsp;Playlists</a>
+        <a *ngIf="showDashMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;"  (click)="click_offset_homescreen()" [routerLink]="['/dashboard/dash/homescreen']">  <span *ngIf="offset_homescreen" style="font-weight: 600;"> &nbsp;  </span>  <i class="fas fa-home"></i>   &nbsp;Home Screen</a>
+        <a *ngIf="showDashMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;"  (click)="click_offset_events()" [routerLink]="['/dashboard/dash/events']">  <span *ngIf="offset_Events" style="font-weight: 600;"> &nbsp;  </span>  <i class="fas fa-calendar-week"></i>   &nbsp;Events</a>
+
+        <a *ngIf="showDashMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;"  (click)="click_offset_podcasts()" [routerLink]="['/dashboard/dash/listpodcast']">  <span *ngIf="offset_Podcasts" style="font-weight: 600;"> &nbsp;  </span>  <i class="fas fa-podcast"></i>   &nbsp;Podcasts</a>
+        
+
+        <a *ngIf="showProfileMenu" class="mdl-navigation__link"  style="font-weight: bold;font-family: 'courier-std', cursive; font-weight: 100;color: white; letter-spacing: 0px;text-decoration: none;text-transform: uppercase;" (click)="redirecttoedit();click_offset_profile()"><i class="fas fa-user"></i>  <span *ngIf="offset_profile" style="font-weight: 600;"> &nbsp; </span> &nbsp;  Profile</a> -->
+
+
+
+
+      </nav>
+    </div>
+    <main class="mdl-layout__content" style="height: 100vh;">
+      <div class="page-content">
+       <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+          <!-- START JUMBOTRON -->
+          <div class="jumbotron" data-pages="parallax">
+            <div class=" container-fluid   container-fixed-lg sm-p-l-0 sm-p-r-0">
+              <div class="inner" style="height: auto;">
+                <div align="right" style="padding: 20px;">
+                  <!-- <img src="{{userimage}}" style="height: 15px;"> -->
+                  &nbsp; &nbsp;
+                  <a style="color:#3cba92;text-decoration: none !important;font-size: 10pt;font-family: Helvetica;text-transform: uppercase;letter-spacing: 1px;" (click)="signout()">
+                   <i class="fas fa-sign-out-alt" style="color: #3cba92; "></i>  <span style="text-decoration: none !important;"> Logout </span>
+                 </a>
+               </div>
+               <router-outlet>
+               </router-outlet>
+               <!-- <app-channels-dash [curatoruid]="user_uid"></app-channels-dash> -->
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </main>
+</div>
