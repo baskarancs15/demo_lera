@@ -9284,3 +9284,5 @@ scrollmenu::-webkit-scrollbar {
 }
 
 
+
+@import '~ngx-toastr/toastr';

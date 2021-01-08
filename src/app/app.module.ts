@@ -11,6 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListretailersComponent } from './listretailers/listretailers.component';
 import { DefaultComponent } from './default/default.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { DefaultComponent } from './default/default.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFullpageModule
+    AngularFullpageModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   exports: [
     RegistrationComponent

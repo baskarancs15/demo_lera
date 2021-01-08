@@ -105,6 +105,12 @@ body {
   background-color: #ea4335;
 }
 
+.error {
+  font-size: 12px;
+  margin-left: 10px;
+  color: red;
+}
+
 .btn-facebook {
   color: white;
   background-color: #3b5998;
