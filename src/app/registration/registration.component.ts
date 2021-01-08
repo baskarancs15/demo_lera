@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -29,7 +30,8 @@ export class RegistrationComponent implements OnInit {
   ];
 
   constructor(private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -49,16 +51,15 @@ export class RegistrationComponent implements OnInit {
     console.log('123');
 
     if (this.signupForm.value.mobile1 !== '' && this.signupForm.value.password1 !== '' && this.signupForm.value.username1 !== '') {
-      this.router.navigate(['/home']);
+      this.toastr.success('User registered successfully! Please sign in to continue...');
+      this.router.navigate(['/login']);
 
     } else {
-      // this.toastr.warning('Please try again later', null);
-      console.log('Please fill data');
       this.signupForm.reset();
+      this.toastr.warning('Please fill all details', null);
     }
   }
   get f() {
-    // console.log(this.signupForm.controls);
     return this.signupForm.controls;
   }
 }

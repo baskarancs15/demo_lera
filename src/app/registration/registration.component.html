@@ -5,7 +5,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign Up</h5>
-            <form [formGroup]="signupForm" class="form-signup">
+            <form [formGroup]="signupForm" autocomplete="off" class="form-signup">
 
               <div class="form-label-group">
                 <input type="text" id="userName1" class="form-control" placeholder="User name"
@@ -57,8 +57,9 @@
               </div> -->
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
                 (click)="signup()">Register</button>
-              <div class="">Already have an account !
-                <a [routerLink]="['/login']"><strong class="col">Sign
+              <hr class="my-4">
+              <div class="m-l-10">Already have an account !
+                <a class="float-right" [routerLink]="['/login']"><strong class="col">Sign
                     in</strong></a>
               </div>
             </form>
