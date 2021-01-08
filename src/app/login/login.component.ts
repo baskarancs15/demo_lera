@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      // username: new FormControl('', myGlobals.req),
-      mobile: ['',  Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)],
+      mobile: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)]),
+      // mobile: ['',  Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)],
       password: new FormControl('', this.passwordVal),
     });
   }
@@ -31,12 +31,16 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
+  get f() {
+    return this.loginForm.controls;
+  }
+
   login() {
     if(this.loginForm.value.mobile != '', this.loginForm.value.password != ''){
       this.router.navigate(['/home']);
     }else {
+      this.loginForm.reset();
       // this.toastr.warning('Please try again later', null);
-      console.log("Please fill data");
     }
   }
 }
