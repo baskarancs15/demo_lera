@@ -11,7 +11,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  login(data:any){
-    return this.http.post(this.url + '/api/login', data)
+  login(data: any) {
+    return this.http.post(this.url + '/api/login', data);
+  }
+
+  register(data: any) {
+    return this.http.post(this.url + '/api/register', data);
   }
 }

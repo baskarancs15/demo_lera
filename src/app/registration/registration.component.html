@@ -5,22 +5,37 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign Up</h5>
-            <form class="form-signup">
+            <form [formGroup]="signupForm" autocomplete="off" class="form-signup">
 
               <div class="form-label-group">
-                <input type="username" id="userName" class="form-control" placeholder="User name" required autofocus>
-                <label for="userName">User name</label>
+                <input type="text" id="userName1" class="form-control" placeholder="User name"
+                  formControlName="username1" minlength="3" maxlength="20"
+                  [ngClass]="{ 'is-invalid': f.username1.touched && f.username1.errors }" required autofocus>
+                <label for="userName1">User name</label>
+                <div *ngIf="f.username1.touched && f.username1.errors" class="invalid-feedback">
+                  <p class="error" *ngIf="f.username1.errors.required">{{'User Name is required'}}</p>
+                  <p class="error" *ngIf="f.username1.errors.pattern">{{'User Name is invalid'}}</p>
+                  <!-- <div *ngIf="f.username1.errors.minlength">User Name must be minimum of 3 characters </div>
+                  <div *ngIf="f.username1.errors.maxlength">User Name must be 20 maximum of characters</div> -->
+                  <p class="error" *ngIf="f.username1.errors.maxlength || f.username1.errors.minlength">{{'User name must be 3-20
+                    characters long'}} </p>
+                </div>
               </div>
 
-              <div class="form-label-group">
-                <input type="fullname" id="fullName" class="form-control" placeholder="Full name" required autofocus>
-                <label for="fullName">Full name</label>
-              </div>
+              <!-- <div class="form-label-group">
+                <input type="fullname1" id="fullName1" class="form-control" placeholder="Full name" required autofocus>
+                <label for="fullName1">Full name</label>
+              </div> -->
 
               <div class="form-label-group">
-                <input type="mobileno" id="mobileNo" class="form-control" placeholder="Mobile number" required
-                  autofocus>
+                <input type="text" id="mobileNo" class="form-control" placeholder="Mobile number"
+                  formControlName="mobile1" required>
                 <label for="mobileNo">Mobile number</label>
+                <p class="error" *ngIf="f.mobile1.touched && f.mobile1.errors">{{'Mobile number is required'}}</p>
+                <p class="error" *ngIf="signupForm.get('mobile1').hasError('pattern')">
+                  {{'Please enter a valid mobile number'}}</p>
+                <!-- <p class="error" *ngIf="f.mobile1.errors.minlength">
+                  {{'Please enter a valid mobile number'}} </p> -->
               </div>
 
               <!-- <div class="form-label-group">
@@ -29,17 +44,22 @@
               </div> -->
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword1" class="form-control" placeholder="Password"
+                  formControlName="password1" [ngClass]="{ 'is-invalid': f.password1.touched && f.password1.errors }"
+                  required autofocus>
+                <label for="inputPassword1">Password</label>
+                <p class="error" *ngIf="f.password1.touched && f.password1.errors">{{'Password is required'}}</p>
               </div>
 
               <!-- <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div> -->
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <div class="">Already have an account !
-                <a [routerLink]="['/login']"><strong class="col">Sign
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                (click)="signup()">Register</button>
+              <hr class="my-4">
+              <div class="m-l-10">Already have an account !
+                <a class="float-right" [routerLink]="['/login']"><strong class="col">Sign
                     in</strong></a>
               </div>
             </form>

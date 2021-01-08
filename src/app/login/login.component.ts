@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     Validators.minLength(8),
     Validators.maxLength(20),
     Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?=.*?^[A-Za-z0-9!<>?/{}\|+-_=@#%$^*()]*$)/)
-];
+  ];
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      mobile: new FormControl(null, [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)]),
+      mobile: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)]),
       // mobile: ['',  Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)],
       password: new FormControl(null, this.passwordVal),
     });
@@ -40,20 +40,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if(this.loginForm.value.mobile != null && this.loginForm.value.password != null){
+    if (this.loginForm.value.mobile != null && this.loginForm.value.password != null) {
       const ObjData = {
         "mobilenumber": this.loginForm.value.mobile
         // "password": this.loginForm.value.password
       }
       this.apiService.login(ObjData)
-      .subscribe((loginresult: any) => {
-        if(loginresult != null){
-          this.router.navigate(['/home/dashboard/default']);
-        }else{
-          this.toastr.warning('Invalid Credentials');
-        }
-      });
-    }else {
+        .subscribe((loginresult: any) => {
+          if (loginresult != null) {
+            this.router.navigate(['/home/dashboard/default']);
+          } else {
+            this.toastr.warning('Invalid Credentials');
+          }
+        });
+    } else {
       this.loginForm.reset();
       this.toastr.warning('Please fill all feilds');
     }
