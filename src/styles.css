@@ -4,6 +4,7 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~fullpage.js/dist/fullpage.min.css';
 /* @import '~open-iconic/font/css/open-iconic-bootstrap.css'; */
+@import '~ngx-toastr/toastr';
 
 
 /*!
