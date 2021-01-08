@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-registration',
@@ -31,7 +32,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private apiService: ApiService) { }
 
   ngOnInit() {
 
@@ -48,9 +50,23 @@ export class RegistrationComponent implements OnInit {
   }
 
   signup() {
-    console.log('123');
+    // console.log('123');
 
     if (this.signupForm.value.mobile1 !== '' && this.signupForm.value.password1 !== '' && this.signupForm.value.username1 !== '') {
+      const ObjData = {
+        'username': this.signupForm.value.username1,
+        'mobilenumber': this.signupForm.value.mobile1,
+        'password': this.signupForm.value.password1
+      };
+      this.apiService.register(ObjData)
+        .subscribe((registerresult: any) => {
+          // if (loginresult != null) {
+          //   this.router.navigate(['/home/dashboard/default']);
+          // } else {
+          //   this.toastr.warning('Invalid Credentials');
+          // }
+          console.log('registerresult');
+        });
       this.toastr.success('User registered successfully! Please sign in to continue...');
       this.router.navigate(['/login']);
 
