@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
 
     this.signupForm = this.formBuilder.group({
       username1: new FormControl('', this.usernameVal),
-      mobile: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)],
+      mobile1: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)],
       password1: new FormControl('', this.passwordVal),
     });
 
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   signup() {
-    if (this.signupForm.value.mobile !== '' && this.signupForm.value.password1 !== '' && this.signupForm.value.username1 !== '') {
+    if (this.signupForm.value.mobile1 !== '' && this.signupForm.value.password1 !== '' && this.signupForm.value.username1 !== '') {
       this.router.navigate(['/home']);
     } else {
       // this.toastr.warning('Please try again later', null);

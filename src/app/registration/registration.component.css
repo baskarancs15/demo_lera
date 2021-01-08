@@ -136,3 +136,10 @@ body {
     color: #777;
   }
 }
+
+
+.error {
+  font-size: 12px;
+  margin-left: 10px;
+  color: red;
+}

@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
     Validators.minLength(8),
     Validators.maxLength(20),
     Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?=.*?^[A-Za-z0-9!<>?/{}\|+-_=@#%$^*()]*$)/)
-];
+  ];
   constructor(private router: Router,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      mobile: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)]),
+      mobile: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[6-9][0-9]{9}$/)]),
       // mobile: ['',  Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^[6-9][0-9]{9}$/)],
       password: new FormControl('', this.passwordVal),
     });
@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if(this.loginForm.value.mobile != '', this.loginForm.value.password != ''){
+    if (this.loginForm.value.mobile != '', this.loginForm.value.password != '') {
       this.router.navigate(['/home']);
-    }else {
+    } else {
       this.loginForm.reset();
       // this.toastr.warning('Please try again later', null);
     }

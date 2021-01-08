@@ -13,12 +13,12 @@
                   [ngClass]="{ 'is-invalid': f.username1.touched && f.username1.errors }" required autofocus>
                 <label for="userName1">User name</label>
                 <div *ngIf="f.username1.touched && f.username1.errors" class="invalid-feedback">
-                  <div *ngIf="f.username1.errors.required">User Name is required</div>
-                  <div *ngIf="f.username1.errors.pattern">User Name is invalid</div>
+                  <p class="error" *ngIf="f.username1.errors.required">{{'User Name is required'}}</p>
+                  <p class="error" *ngIf="f.username1.errors.pattern">{{'User Name is invalid'}}</p>
                   <!-- <div *ngIf="f.username1.errors.minlength">User Name must be minimum of 3 characters </div>
                   <div *ngIf="f.username1.errors.maxlength">User Name must be 20 maximum of characters</div> -->
-                  <div *ngIf="f.username1.errors.maxlength || f.username1.errors.minlength">User name must be 3-20
-                    characters long </div>
+                  <p class="error" *ngIf="f.username1.errors.maxlength || f.username1.errors.minlength">{{'User name must be 3-20
+                    characters long'}} </p>
                 </div>
               </div>
 
@@ -28,9 +28,14 @@
               </div> -->
 
               <div class="form-label-group">
-                <input type="text" id="mobileNo" class="form-control" placeholder="Mobile number"
-                  formControlName="mobile" required autofocus>
+                <input type="email" id="mobileNo" class="form-control" placeholder="Mobile number"
+                  formControlName="mobile1" required>
                 <label for="mobileNo">Mobile number</label>
+                <p class="error" *ngIf="f.mobile1.touched && f.mobile1.errors">{{'Mobile number is required'}}</p>
+                <p class="error" *ngIf="signupForm.get('mobile1').hasError('pattern')">
+                  {{'Please enter a valid mobile number'}}</p>
+                <!-- <p class="error" *ngIf="f.mobile1.errors.minlength">
+                  {{'Please enter a valid mobile number'}} </p> -->
               </div>
 
               <!-- <div class="form-label-group">
@@ -40,8 +45,10 @@
 
               <div class="form-label-group">
                 <input type="password" id="inputPassword1" class="form-control" placeholder="Password"
-                  formControlName="password1" required autofocus>
+                  formControlName="password1" [ngClass]="{ 'is-invalid': f.password1.touched && f.password1.errors }"
+                  required autofocus>
                 <label for="inputPassword1">Password</label>
+                <p class="error" *ngIf="f.password1.touched && f.password1.errors">{{'Password is required'}}</p>
               </div>
 
               <!-- <div class="custom-control custom-checkbox mb-3">
